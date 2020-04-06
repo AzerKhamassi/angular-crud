@@ -1,0 +1,6 @@
+.centered {
+  margin: 1rem auto;
+}
+.ng-invalid .ng-dirty .ng-touched .ng-pristine {
+  border: 2px red solid;
+}
