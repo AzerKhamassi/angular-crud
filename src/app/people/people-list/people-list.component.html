@@ -1,17 +1,29 @@
-<div class="col-md-10 centered">
+<div class="col-md-10 m-auto">
   <div class="col-md-6">
     <h1 class="display-3 title">People List</h1>
   </div>
-  <div class="col-md-6 search">
-    <input class="form-control" type="text" name="search"
-    [(ngModel)]="searchText" autocomplete="off"
-    placeholder="Start searching by first name or last name or phone number">
+  <div class="row m-auto">
+    <div class="col-md-6 search">
+      <input
+        class="form-control"
+        type="text"
+        name="search"
+        [(ngModel)]="searchText"
+        autocomplete="off"
+        placeholder="Start searching by first name or last name or phone number"
+      />
+    </div>
+    <div class="col-md-6">
+      <a class="btn btn-info btn-lg" style="width: auto;" routerLink="/create"
+        >Click here to add</a
+      >
+    </div>
   </div>
   <div class="container-table">
     <div *ngIf="people.length > 0; else elseBlock">
-      <table class="table table striped" >
-        <thead >
-          <tr >
+      <table class="table table striped">
+        <thead>
+          <tr>
             <th scope="col">#</th>
             <th scope="col">First Name</th>
             <th scope="col">Last Name</th>
@@ -19,16 +31,22 @@
             <th scope="col">Operations</th>
           </tr>
         </thead>
-        <tbody >
-          <tr *ngFor="let ppl of people | filter:searchText;  let i = index ">
-            <td>{{ i+1 }}</td>
-            <td>{{ppl.firstName}}</td>
-            <td>{{ppl.lastName}}</td>
-            <td>{{ppl.phone}}</td>
+        <tbody>
+          <tr *ngFor="let ppl of people | filter: searchText; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ ppl.firstName }}</td>
+            <td>{{ ppl.lastName }}</td>
+            <td>{{ ppl.phone }}</td>
             <td>
-              <a class="btn btn-primary link" [routerLink]="['/people',ppl.id]" >Details</a>
-              <a class="btn btn-success link" [routerLink]="['/edit',ppl.id]" >Update</a>
-              <button class="btn btn-danger" (click)="onDelete(ppl.id)">Delete</button>
+              <a class="btn btn-primary link" [routerLink]="['/people', ppl.id]"
+                >Details</a
+              >
+              <a class="btn btn-success link" [routerLink]="['/edit', ppl.id]"
+                >Update</a
+              >
+              <button class="btn btn-danger" (click)="onDelete(ppl.id)">
+                Delete
+              </button>
             </td>
           </tr>
         </tbody>
